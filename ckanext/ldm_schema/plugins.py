@@ -56,12 +56,12 @@ class LDMSchemaPlugin(p.SingletonPlugin):
         package_id = pkg_dict.get('id')
         if "defined_in" in pkg_dict:
             doi = pkg_dict['defined_in']
-            if doi != "" or doi != None:
+            if doi != "" and doi is not None:
                 orkg = get_paper_link_by_doi(doi)
             else:
                 orkg = ""
             pkg = model.Package.get(package_id)
-            if orkg == "" or orkg == None:
+            if orkg == "" or orkg is None:
                 new_value = ""
             else:
                 #self._save_to_package_extra(package_id, 'Link to ORKG', orkg)
