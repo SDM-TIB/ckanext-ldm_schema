@@ -16,7 +16,7 @@ log = logging.getLogger(__name__)
 def get_paper_link_by_doi(doi):
     if "https://doi.org/" in doi:
         doi = doi.replace("https://doi.org/", "")
-    search_url = f"https://www.orkg.org/orkg/api/papers?doi={doi}"
+    search_url = f"https://orkg.org/api/papers?doi={doi}"
 
     response = requests.get(search_url)
 
