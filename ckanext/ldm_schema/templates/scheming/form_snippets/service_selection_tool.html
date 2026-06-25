@@ -4,7 +4,7 @@
 {% set data_id = data.get("id", "") %}
 {% set dataT = h.scheming_get_local_services_for_datasets(data_id) %}
 
-{% asset 'ckanext-scheming/service_selector' %}
+{% asset 'ckanext-ldm_schema/service_selector' %}
 
 {# This snippet creates a Dataset selection tool (DST) for the service-dataset relationship #}
 <div class="panel panel-default" data-module="scheming-tib-services-service-sel-tool">

@@ -1,6 +1,6 @@
 multiple_text:
   filters: rjsmin
-  output: ckanext-scheming/%(version)s_scheming_multiple_text.js
+  output: ckanext-ldm_schema/%(version)s_scheming_multiple_text.js
   extra:
     preload:
       - base/main
@@ -9,7 +9,7 @@ multiple_text:
 
 dataset_selector:
   filters: rjsmin
-  output: ckanext-scheming/%(version)s_tib-services-dataset-sel-tool.js
+  output: ckanext-ldm_schema/%(version)s_tib-services-dataset-sel-tool.js
   extra:
     preload:
       - base/main
@@ -18,7 +18,7 @@ dataset_selector:
 
 service_selector:
   filters: rjsmin
-  output: ckanext-scheming/%(version)s_tib-services-service-sel-tool.js
+  output: ckanext-ldm_schema/%(version)s_tib-services-service-sel-tool.js
   extra:
     preload:
       - base/main
