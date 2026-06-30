@@ -26,7 +26,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'ckanext-scheming>=2.1.0',
+        'ckanext-scheming>=3.0.0',
     ],
     entry_points="""
     [ckan.plugins]
