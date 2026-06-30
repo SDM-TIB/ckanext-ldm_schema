@@ -20,6 +20,50 @@ Designed to work with CKAN 2.9.
 
 This extension also requires `ckanext-scheming` to be installed. 
 
+## Additional Features
+
+`ckanext-ldm_schema` extends `ckanext-scheming` with collapsible sections.
+Sections are defined at their own top-level entry in the yaml files, e.g.:
+
+```yaml
+sections:
+  - section_id: geospatial
+    title: Geospatial Information
+    subtitle: Address or extend covered by the data
+  - section_id: temporal
+    title: Temporal Information
+    subtitle: Reference date or timeseries covered by the data
+```
+
+The `dataset` and `resource` fields can then use these sections by adding `section_id`.
+Note that, there will be one collapsible section for all subsequent fields with the same section mentioned.
+The example below will create two collapsible sections for the sections defined above.
+
+```yaml
+  - field_name: address
+    label: Address
+    section_id: geospatial
+  - field_name: latitude
+    label: Latitude
+    section_id: geospatial
+  - field_name: Longitude
+    label: Longitude
+    section_id: geospatial
+
+  - field_name: temporal_timeseries_start
+    label: Start
+    form_snippet: scheming/form_snippets/datetime_local.html
+    display_snippet: scheming/display_snippets/datetime_local.html
+    validators: ignore_missing normalize_datetime
+    section_id: temporal
+  - field_name: temporal_timeseries_end
+    label: End
+    form_snippet: scheming/form_snippets/datetime_local.html
+    display_snippet: scheming/display_snippets/datetime_local.html
+    validators: ignore_missing normalize_datetime
+    section_id: temporal
+```
+
 ## Installation
 
 As usual for CKAN extensions, you can install `ckanext-ldm_schema` as follows:
