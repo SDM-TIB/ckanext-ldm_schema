@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.0 - 2026-06-30
+- Add support for collapsible section
+- Add a DOI to URL validator fixing bare DOIs linking to the repository
+- Require `ckanext-scheming>=3.0.0`
+
 ## v1.0.3 - 2026-06-25
 - Fix asset loading issue
 
