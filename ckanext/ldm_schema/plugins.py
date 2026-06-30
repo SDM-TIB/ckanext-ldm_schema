@@ -131,6 +131,7 @@ class LDMSchemaPlugin(p.SingletonPlugin):
             'scheming_get_services_for_dataset_display': helpers.scheming_get_services_for_dataset_display,
             'scheming_get_datasets_for_service_display': helpers.scheming_get_datasets_for_service_display,
             'is_doi_plugin_enabled': helpers.is_doi_plugin_enabled,
+            'scheming_get_section': helpers.scheming_get_section,
         }
 
     # IClick

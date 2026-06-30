@@ -1,0 +1,47 @@
+.scheming-section {
+  margin-bottom: 1.5em;
+}
+
+.scheming-section .scheming-section-body {
+  margin-top: 0.75em;
+  padding-left: 0; /* keep body flush too, remove if you want fields indented */
+}
+
+.scheming-section > summary {
+  list-style: none;       /* removes Firefox's built-in marker + its indent */
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.scheming-section > summary:hover {
+  color: #4c5e70;
+}
+
+/* Chrome/Safari render an actual marker box even with list-style:none on the parent; this removes it explicitly */
+.scheming-section > summary::-webkit-details-marker {
+  display: none;
+}
+
+.scheming-section > summary::before {
+  content: '+';
+  display: inline-block;
+  margin-right: 18px;
+  width: 0px;
+  border: none;
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.scheming-section[open] > summary::before {
+  content: '-';
+  transform: none;
+}
+
+.scheming-section > summary + p.text-muted {
+  margin: 0.25em 0 0 0;
+}

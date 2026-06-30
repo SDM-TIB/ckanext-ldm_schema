@@ -4,6 +4,13 @@ from ckanext.ldm_schema.tib_services import get_local_datasets_for_services, get
 from ckantoolkit import config
 
 
+def scheming_get_section(schema, section_id):
+    for section in schema.get('sections', []):
+        if section['section_id'] == section_id:
+            return section
+    return {}
+
+
 def scheming_digital_objects_filter_title():
     data = {'dataset': 'Local Dataset',
             'vdataset': 'Imported Dataset',

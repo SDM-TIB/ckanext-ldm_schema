@@ -1,0 +1,61 @@
+{% ckan_extends %}
+
+{% block basic_fields %}
+  {% asset 'ckanext-ldm_schema/sections_css' %}
+  {% asset 'ckanext-ldm_schema/sections_js' %}
+
+  {%- if not dataset_type -%}
+    <p>
+    dataset_type not passed to template. your version of CKAN
+    might not be compatible with ckanext-scheming
+    </p>
+  {%- endif -%}
+
+  {%- set schema = h.scheming_get_dataset_schema(dataset_type) -%}
+
+  {%- set ns = namespace(current_section=none) -%}
+  {%- for field in schema.resource_fields -%}
+    {%- set sec = field.section_id -%}
+    {%- if sec != ns.current_section -%}
+      {%- if ns.current_section -%}
+        </div></details>
+      {%- endif -%}
+      {%- if sec -%}
+        {%- set info = h.scheming_get_section(schema, sec) -%}
+        <details class="scheming-section">
+          <summary class="control-label">{{ h.scheming_language_text(info.title) if info.title else sec }}</summary>
+          {%- if info.subtitle %}<p class="text-muted">{{ h.scheming_language_text(info.subtitle) }}</p>{% endif %}
+          <div class="scheming-section-body">
+      {%- endif -%}
+      {%- set ns.current_section = sec -%}
+    {%- endif -%}
+
+    {%- if field.form_snippet is not none -%}
+      {%- if field.field_name not in data %}
+        {# Set the field default value before rendering but only if
+        it doesn't already exist in data which would mean the form
+        has been submitted. #}
+        {% if field.default_jinja2 %}
+          {% do data.__setitem__(
+            field.field_name,
+            h.scheming_render_from_string(field.default_jinja2)) %}
+        {% elif field.default %}
+          {% do data.__setitem__(field.field_name, field.default) %}
+        {% endif %}
+      {% endif -%}
+      {%- snippet 'scheming/snippets/form_field.html',
+        field=field,
+        data=data,
+        errors=errors,
+        licenses=c.licenses,
+        entity_type='dataset',
+        object_type=dataset_type
+      -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if ns.current_section -%}
+    </div></details>
+  {%- endif -%}
+
+{% endblock %}

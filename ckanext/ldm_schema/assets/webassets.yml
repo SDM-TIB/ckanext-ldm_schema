@@ -27,9 +27,20 @@ service_selector:
 
 autoupdate_resources:
   filters: rjsmin
-  output: ckanext-scheming/%(version)s_tib-autoupdate-resources-sel-tool.js
+  output: ckanext-ldm_schema/%(version)s_tib-autoupdate-resources-sel-tool.js
   extra:
     preload:
       - base/main
   contents:
     - js/scheming-tib-autoupdate-resources-sel-tool.js
+
+sections_css:
+  output: ckanext-ldm_schema/%(version)s_scheming-sections.css
+  contents:
+    - css/scheming-sections.css
+
+sections_js:
+  filter: rjsmin
+  output: ckanext-ldm_schema/%(version)s_scheming-sections.js
+  contents:
+    - js/scheming-sections.js
