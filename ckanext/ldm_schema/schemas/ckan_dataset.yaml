@@ -47,6 +47,7 @@ dataset_fields:
   form_placeholder: https://doi.org/10.48550/arXiv.2008.07176
   display_property: datacite:isDescribedBy
   display_snippet: link.html
+  validators: ignore_missing unicode_safe doi_to_url
 
 - field_name: citation
   label: Citation
